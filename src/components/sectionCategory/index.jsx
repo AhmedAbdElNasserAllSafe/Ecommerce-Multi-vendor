@@ -14,10 +14,7 @@ export default function Categories() {
           titleClass={"font-bold text-3xl"}
           alt="img"
           customButton={
-            <MainButton
-              text={"Add"}
-              buttonClass={"rounded text-black p-3"}
-            />
+            <MainButton text={"Add"} buttonClass={"rounded text-black p-3"} />
           }
           img={"https://picsum.photos/200"}
           imgClass={"w-full"}
@@ -26,12 +23,14 @@ export default function Categories() {
       );
       arr.push(item);
     }
-    console.log("arr: ", arr);
     return arr;
   };
   return (
     <section className="categories">
-        <MainTitle text={'Top Categories Of The Month'} className={'text-center font-bold text-3xl'}/>
+      <MainTitle
+        text={"Top Categories Of The Months"}
+        className={"text-center text-2xl font-bold"}
+      />
       <SwiperElement
         dataSlides={items()}
         dots={false}

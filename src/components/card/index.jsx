@@ -18,33 +18,51 @@ export default function CardElement({
   iconButton,
   isHorizontal,
   cardClass,
+  customCard,
 }) {
   return (
     <div
-      className={`${(isHorizontal && "flex") || ""} ${cardClass || ""} rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800`}
+      className={`${(isHorizontal && "flex") || ""} ${cardClass || ""} rounded-lg border border-gray-200 bg-white shadow`}
     >
-      <a href="#" className={imgParentClass || ""}>
+      <a href="#" className={` ${imgParentClass || ""}`}>
         {img && (
           <img
-            className={`${isHorizontal && "h-full" || ''} ${imgClass || ""}`}
+            className={`${(isHorizontal && "h-full") || ""} ${imgClass || ""}`}
             src={img}
             alt={alt}
           />
         )}
       </a>
       {iconImg && iconImg}
-      <div className="p-1">
-        <h5 className={titleClass || ""}>{title}</h5>
-        <p className={pClass || ""}>{p}</p>
-        {buttonClass ? (
-          <Link to={to} className={buttonClass || ""}>
-            {buttonText}
-            {iconButton}
-          </Link>
-        ) : (
-          customButton
-        )}
-      </div>
+      {customCard ? (
+        <main className="w-1/2">
+          <div className="cardTitle">
+            <h5 className={titleClass || ""}>{title}</h5>
+          </div>
+          <hr />
+          <div className="price">
+            <h2>$250</h2>
+          </div>
+          <div className="rate">rate</div>
+          <div className="size">size</div>
+          <hr />
+          <div className="actions">actions</div>
+          <div className="socials">socials</div>
+        </main>
+      ) : (
+        <div className="p-1">
+          <h5 className={titleClass || ""}>{title}</h5>
+          <p className={pClass || ""}>{p}</p>
+          {buttonClass ? (
+            <Link to={to} className={buttonClass || ""}>
+              {buttonText}
+              {iconButton}
+            </Link>
+          ) : (
+            customButton
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -95,4 +113,5 @@ CardElement.propTypes = {
   iconButton: PropTypes.any,
   isHorizontal: PropTypes.bool,
   cardClass: PropTypes.string,
+  customCard: PropTypes.string,
 };
